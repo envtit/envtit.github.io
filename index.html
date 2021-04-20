@@ -37,14 +37,14 @@
 					<span class="input-group-text">ID:</span>
 					<input type="text" class="form-control" id="remoteId" aria-label="Amount (to the nearest dollar)">
 					<button class="btn btn-outline-secondary" id="btnMake" type="button" id="button-addon2">
-						Gọi
+						Truyền
 					</button>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<video id="localVideo" autoplay playsinline controls="false"></video>
+				<video id="localVideo" autoplay muted="" playsinline controls="false"></video>
 			</div>
 			<div class="col-lg-8">
 				<video id="video" style="width: 100%" autoplay playsinline controls="false"></video>
@@ -69,15 +69,6 @@
 
 	async function getStreamCall(){
 		try {
-	  //       const constraints = 
-	  //       {
-			//     video: {
-			//         cursor: 'always' | 'motion' | 'never',
-			//         displaySurface: 'application' | 'browser' | 'monitor' | 'window'
-			//     }
-			// }
-
-			// const stream = await navigator.mediaDevices.getDisplayMedia(constraints);
 			const constraints = {'video': true, 'audio': {'echoCancellation': true}};
 	        const stream = await navigator.mediaDevices.getUserMedia(constraints);
 	        const videoElement = document.querySelector('video#localVideo');
@@ -95,7 +86,8 @@
 			    video: {
 			        cursor: 'always' | 'motion' | 'never',
 			        displaySurface: 'application' | 'browser' | 'monitor' | 'window'
-			    }
+			    },
+			    audio: {'echoCancellation': true}
 			}
 
 			const stream = await navigator.mediaDevices.getDisplayMedia(constraints);
